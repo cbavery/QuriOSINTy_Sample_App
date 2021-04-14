@@ -15,9 +15,9 @@ function getCookie(name) {
 }
 
 $(document).ready(function() {
-    $('#img_url').change(function(){
+    $('#src_url').change(function(){
         $('#previewImage').css({'max-width' : '500px' , 'max-height' : '500px'});
-        $('#previewImage').attr("src", $('#img_url').val());
+        $('#previewImage').attr("src", $('#src_url').val());
 
     });
 

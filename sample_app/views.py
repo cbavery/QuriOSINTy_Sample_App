@@ -19,24 +19,18 @@ def add_task(request) :
         post = request.POST
         task_name = post['task_name'].strip()
         description = post['task_description'].strip()
-        time_estimate = post['time_estimate'].strip()
-        img_url = post['img_url'].strip()
         num_responses = int(post['num_responses'].strip())
-        q1 = post['q1'].strip()
-        q2 = post['q2'].strip()
-        q3 = post['q3'].strip()
         
         # NOTE API CALL SETUP: call task POST API to add a new task to the database for a given flag ID
         flag_id = "1" # this should not be fixed (in the future), we need to associate a task to a specific verification flag
-        data = {"img_url":img_url, "q1":q1, "q2":q2, "q3":q3}
+        data = {"src_url":src_url}
 
         # create the request object (don't foget to convert to json with json.dumps)
         request = { 
-                    "tool_name": "Photo Verification Sample App",
+                    "tool_name": "Credibility Checker",
                     "name": task_name,
                     "status": "Open",
                     "description": description,
-                    "time_estimate": time_estimate,
                     "data": data,
                     "request_responses": num_responses,
                     "flag": {
@@ -106,13 +100,7 @@ def task_list(request):
                 "name": task['name'],
                 "status": task['status'],
                 "description": task['description'],
-                "date_created": task['date_created'],
-                "img_url": data['img_url'],
-                "q1": data['q1'],
-                "q2": data['q2'],
-                "q3": data['q3'],
-                "num_responses": task['request_responses'],
-                "num_completed": num_completed
+                "date_created": task['date_created']
             }
             tasks.append(temp_task)
 
@@ -142,14 +130,8 @@ def task_details(request, task_id):
             "name": data['name'],
             "status": data['status'],
             "description": data['description'],
-            # "created_by": data['created_by'],
-            "date_created": data['date_created'],
-            "img_url": t_data['img_url'],
-            "q1": t_data['q1'],
-            "q2": t_data['q2'],
-            "q3": t_data['q3'],
-            "num_responses": data['request_responses'],
-            "num_completed": num_completed
+            "created_by": data['created_by'],
+            "date_created": data['date_created']
         }
 
     # NOTE API CALL SETUP: call task GET API to get all responses for a given task
