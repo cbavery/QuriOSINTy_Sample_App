@@ -13,12 +13,12 @@
                 <form method="POST" id="create_task_form">
                     {% csrf_token %}
                         <h3>
-                            Create Your Task
+                            Create Your Flag
                         </h3>
                 <fieldset>
                     <div class="form-group row">
                         <div class="col-sm-1"></div>
-                        <label for="task_name" class="col-sm-1 col-form-label font-weight-bold">Task Name</label>
+                        <label for="task_name" class="col-sm-1 col-form-label font-weight-bold">Flag Name</label>
                         <div class="col">
                         <input type="text" class="form-control" id="task_name" placeholder="Use a name that is easy to recognize" required>
                         </div>
@@ -27,7 +27,7 @@
 
                     <div class="form-group row">
                         <div class="col-sm-1"></div>
-                        <label for="task_description" class="col-sm-1 col-form-label font-weight-bold">Task Description</label>
+                        <label for="task_description" class="col-sm-1 col-form-label font-weight-bold">Flag Description</label>
                         <div class="col">
                         <input type="text" class="form-control" id="task_description" placeholder="Describe what your task involves" required>
                         </div>
@@ -44,7 +44,7 @@
                     </div>
 
                     <br>
-                    <h5>Enter the number of people you would like to complete this task:</h5>
+                    <h5>Enter the number of people you would like to complete this Flag:</h5>
                     <br>
                     <div class="form-group row">
                         <div class="col-sm-1"></div>

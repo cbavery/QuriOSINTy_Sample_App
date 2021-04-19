@@ -11,12 +11,12 @@
             
             <div class="col">
                 <h3>
-                    Task {{ task.id }}: {{ task.name }}
+                    Flag {{ task.id }}: {{ task.name }}
                 </h3>
                 <h5>Status: {{ task.status }}</h5> 
                 <h5>Date Created: {{ task.date_created }}</h5>
-                {% if task.status == "Open" %}<button id="close_task_btn" class="btn btn-danger">Close Task</button>{% endif %}
-                {% if task.status == "Closed" %}<button id="reopen_task_btn" class="btn btn-success">Reopen Task</button>{% endif %}
+                {% if task.status == "Open" %}<button id="close_task_btn" class="btn btn-danger">Close Flag</button>{% endif %}
+                {% if task.status == "Closed" %}<button id="reopen_task_btn" class="btn btn-success">Reopen Flag</button>{% endif %}
                 <fieldset>
                     <div class="form-group row">
                         <div class="col-sm-1"></div>
@@ -26,7 +26,7 @@
                     </div>
 
                     <br>
-                    <h4>Task Responses:</h4>
+                    <h4>Flag Responses:</h4>
                     <br>
                     <div class="form-group row">
                         <div class="col-sm-1"></div>

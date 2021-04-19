@@ -13,7 +13,7 @@
                 <form method="POST" id="create_response_form">
                     {% csrf_token %}
                         <h4>
-                            Task {{ task.id }}: {{ task.name }}
+                            Flag {{ task.id }}: {{ task.name }}
                         </h4>
                 <br>
                 <fieldset>
@@ -67,7 +67,7 @@
                             {% if responses_allowed == False %} 
                                 No more responses needed.
                             {% endif %}
-                            This task is closed. Please contribute to an open task. Thanks!
+                            This flag is closed. Please contribute to an open flag. Thanks!
                         </p>
                     {% endif %}
                 </form>
