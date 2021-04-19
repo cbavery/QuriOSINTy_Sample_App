@@ -266,26 +266,24 @@ def response_details(request, task_id, response_id):
     print("DATA RESPONSE", data)
 
     # API returns the response and its parent task details, parse it
-    t_data = data['task']['data']
-    task = {"id": data['task']['id'],
-            "name": data['task']['name'],
-            "status": data['task']['status'],
-            "date_created": data['task']['date_created'],
-            "img_url": t_data['img_url'],
-            "q1": t_data['q1'],
-            "q2": t_data['q2'],
-            "q3": t_data['q3'],
-            "num_responses": data['task']['request_responses'],
+    t_data = data['task_id']
+    print("TASK RESPONSE", t_data)
+
+
+    
+    task = {"id": data['task_id'],
+            "name": data['task_id'],
+            "status": data['task_id'],
+            "date_created": data['task_id'],
+            "src_url": data['task_id'],
+            "num_responses": data['task_id'],
             "num_completed": "0"
         }
     
     # API returns response details, parse the response
-    ans = json.loads(data['data'])
+    
     response = {
         "id": data['id'],
-        "ans1": ans['ans1'],
-        "ans2": ans['ans2'],
-        "ans3": ans['ans3'],
         "created_by": data['created_by'],
         "date_created": data['date_created'],
         "status": data['status']
