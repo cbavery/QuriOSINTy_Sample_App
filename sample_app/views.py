@@ -187,10 +187,6 @@ def create_response(request, task_id):
             "status": data['status'],
             "description": data['description'],
             "date_created": data['date_created'],
-            "img_url": t_data['img_url'],
-            "q1": t_data['q1'],
-            "q2": t_data['q2'],
-            "q3": t_data['q3'],
             "num_responses": data['request_responses'],
             "num_completed": num_completed
         }
