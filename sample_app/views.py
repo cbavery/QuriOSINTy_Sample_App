@@ -85,7 +85,7 @@ def task_list(request):
     # parse the response
     tasks = []
     for task in data:
-        if task["tool_name"] == "Photo Verification Sample App" : 
+        if task["tool_name"] == "Test tool" : 
             # NOTE API CALL SETUP: call task GET API to get all responses for a given task 
             # NOTE This is an inefficient way to do it, we are working on an API call that just returns a) total number of responses and b) number of completed responses
             url = "https://quriosinty-dev.herokuapp.com/api/v1/task/"+str(task['id'])+"/response" # URL for API call
@@ -142,15 +142,12 @@ def task_details(request, task_id):
 
     responses = []
     for response in data: 
-        ans = json.loads(response['data'])
+        ans = json.loads(str(response['data']))
         temp_response = { 
                     "id": response['id'],
                     "date_created": response['date_created'],
                     "created_by": response['created_by'],
                     "status": response['status'],
-                    "ans1": ans['ans1'],
-                    "ans2": ans['ans2'],
-                    "ans3": ans['ans3'],
                 }
         print("TEMP RESPONSE", temp_response)
         responses.append(temp_response)
