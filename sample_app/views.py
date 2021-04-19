@@ -266,17 +266,16 @@ def response_details(request, task_id, response_id):
     print("DATA RESPONSE", data)
 
     # API returns the response and its parent task details, parse it
-    t_data = data['task_id']
+    task_url = "https://quriosinty-dev.herokuapp.com/api/v1/task/"+str(task_id)+"/" # URL for API call
+    res = requests.get(url = task_url)
+    t_data = res.json()
     print("TASK RESPONSE", t_data)
-
-
     
-    task = {"id": data['task_id'],
-            "name": data['task_id'],
-            "status": data['task_id'],
-            "date_created": data['task_id'],
-            "src_url": data['task_id'],
-            "num_responses": data['task_id'],
+    task = {"id": t_data['id'],
+            "name": t_data['name'],
+            "status": t_data['status'],
+            "date_created": t_data['date_created'],
+            "created_by": t_data['created_by'],
             "num_completed": "0"
         }
     
