@@ -20,6 +20,7 @@ def add_task(request) :
         task_name = post['task_name'].strip()
         description = post['task_description'].strip()
         num_responses = int(post['num_responses'].strip())
+        src_url = post['src_url'].strip()
         
         # NOTE API CALL SETUP: call task POST API to add a new task to the database for a given flag ID
         flag_id = "1" # this should not be fixed (in the future), we need to associate a task to a specific verification flag
