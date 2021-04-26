@@ -48,8 +48,8 @@ def add_task(request) :
         data = response.json() # extracting response data in json format
         print("DATA RESPONSE", data)
 
-        task_id = data["id"]
-        return HttpResponse(status=200,content=str(task_id)) # return task ID
+        # task_id = data["id"]
+        return HttpResponse(status=200,content=str(1)) # return task ID
     else:
         return HttpResponse(status=400)
 
