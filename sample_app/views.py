@@ -41,15 +41,15 @@ def add_task(request) :
         print("DATA REQUEST", json.dumps(request))
 
         # sending post request and saving the response as response object
-        url = "https://quriosinty-dev.herokuapp.com/api/v1/task/" # URL for API call
+        url = "https://credibility-checker.herokuapp.com/api/v1/task/" # URL for API call
         data = json.dumps(request) # convert dictionary to JSON
         headers = {'content-type': 'application/json'} # header type
         response = requests.post(url = url, data = data, headers = headers) # make the post request
         data = response.json() # extracting response data in json format
         print("DATA RESPONSE", data)
 
-        # task_id = data["id"]
-        return HttpResponse(status=200,content=str(1)) # return task ID
+        task_id = data["id"]
+        return HttpResponse(status=200,content=str(task_id)) # return task ID
     else:
         return HttpResponse(status=400)
 
