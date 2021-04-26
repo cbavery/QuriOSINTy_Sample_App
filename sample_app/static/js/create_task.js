@@ -26,7 +26,6 @@ $(document).ready(function() {
         var task_name = $('#task_name').val();
         var task_description = $('#task_description').val();
         var src_url = $('#src_url').val();
-        var time_estimate = $('#time_estimate').val();
         // var evidence_list = JSON.stringify(Object.keys(evidence));
         
         var num_responses = $("#num_responses").val();
@@ -34,7 +33,6 @@ $(document).ready(function() {
         if(task_name.length == 0 || 
             task_description.length == 0 ||
             src_url.length == 0 ||
-            time_estimate == 0 ||
             num_responses == 0) {
                 console.log("Fields not set.");
                 return;
@@ -44,7 +42,6 @@ $(document).ready(function() {
             "task_name": task_name,
             "task_description": task_description,
             "src_url": src_url,
-            "time_estimate": time_estimate,
             "num_responses": num_responses
         };
         console.log(data)
