@@ -41,7 +41,7 @@ def add_task(request) :
         print("DATA REQUEST", json.dumps(request))
 
         # sending post request and saving the response as response object
-        url = "https://credibility-checker.herokuapp.com/api/v1/task/" # URL for API call
+        url = "https://quriosinty-dev.herokuapp.com/api/v1/task/" # URL for API call
         data = json.dumps(request) # convert dictionary to JSON
         headers = {'content-type': 'application/json'} # header type
         response = requests.post(url = url, data = data, headers = headers) # make the post request
@@ -206,19 +206,15 @@ def create_response(request, task_id):
 def add_response(request, task_id) :
     if request.method == 'POST':
         post = request.POST
-        username = post['username'].strip()
-        ans1 = post['ans1'].strip()
-        ans2 = post['ans2'].strip()
-        ans3 = post['ans3'].strip()
-        description = {"ans1":ans1, "ans2":ans2, "ans3":ans3}
+        credibility = post['credible'].strip()
+        other_src = post['other_src'].strip()
+        description = {"credibility":credibility, "other_src":other_src}
 
         # NOTE API CALL SETUP: call response POST API to add a new response for a given task ID
         # create the request object (don't foget to convert to json with json.dumps)
         request = { 
                     "task_id": task_id,
-                    "created_by": username,
-                    "status": "Pending",
-                    "data": str(json.dumps(description)) # convert dictionary to JSON
+                    "data": description # convert dictionary to JSON
                 }
         print("DATA REQUEST", json.dumps(request)) 
 

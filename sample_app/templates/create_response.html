@@ -30,25 +30,19 @@
                         <span>{{ task.src_url }}</span>
                         <div class="col-sm-1"></div>
                     </div>
-
-                    <div class="form-group row">
-                        <div class="col-sm-1"></div>
-                        <div class="col">
-                            <div class="image-preview" id="imagePreview">
-                                <img src="{{ task.img_url }}" alt="" class="image-preview__image" id="previewImage" style="max-width:500px; max-height:500px;">
-                            </div>
-                        </div>
-                        <div class="col-sm-1"></div>
-                    </div>
                     <hr><hr>
                     {% if task.status == 'Open' and responses_allowed == True %}
                         <h5>Answer the following questions:</h5>
-                        <br>
                         <div class="form-group">
                             <div class="col-sm-2"></div>
-                            <label for="username" class="font-weight-bold">What is your username?</label>
+                            <label for="credible" class="font-weight-bold">Do you think this source is credible? Why?</label>
                             <div class="col-6">
-                                <input type="text" class="form-control" id="username" placeholder="Enter your username for QuriOSINTy" required>
+                                <input type="text" class="form-control" id="credible" placeholder="Enter response" required>
+                            </div>
+                            <div class="col-sm-2"></div>
+                            <label for="other_src" class="font-weight-bold">Do you have another source that is more credible?</label>
+                            <div class="col-6">
+                                <input type="text" class="form-control" id="other_src" placeholder="Enter response" required>
                             </div>
                             <div class="col-sm-2"></div>
                         </div>

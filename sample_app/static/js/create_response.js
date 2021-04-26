@@ -27,21 +27,17 @@ $(document).ready(function() {
 
     // Send form to the server
     $('#submit_btn').click(function() {
-        var username = $("#username").val();
-        var ans1 = $("#ans1").val();
-        var ans2 = $("#ans2").val();
-        var ans3 = $("#ans3").val();
+        var credible = $("#credible").val();
+        var other_src = $("#other_src").val();
         
-        if(ans1.length == 0) {
+        if(credible.length == 0) {
                 console.log("Fields not set.");
                 return;
         }
 
         data = {
-            "username": username,
-            "ans1": ans1,
-            "ans2": ans2,
-            "ans3": ans3
+            "credible": credible,
+            "other_src": other_src
         };
 
         var task_id = window.location.href.split("/")[4];
