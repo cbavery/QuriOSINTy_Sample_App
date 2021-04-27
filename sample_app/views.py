@@ -92,7 +92,7 @@ def task_list(request):
     url = API_BASE_URL + "task/" # URL for API call
     response = requests.get(url = url) # make the get request
     data = response.json() # extracting response data in json format
-    print("DATA RESPONSE TASK LIST", data)
+    # print("DATA RESPONSE TASK LIST", data)
 
     # parse the response
     tasks = []
@@ -118,12 +118,14 @@ def task_list(request):
                 "num_completed": num_completed
             }
             tasks.append(temp_task)
+    print("Credibility Checker Tasks", tasks)
 
     context = {'page_type': 'task',
                'tasks': tasks}
     return render(request, 'tasks.html', context)
 
 def task_details(request):
+    print("task details")
     # NOTE API CALL SETUP: call task GET API to get all responses for a given task 
     # NOTE This is an inefficient way to do it, we are working on an API call that just returns a) total number of responses and b) number of completed responses
     task_id = request.GET["task"]
