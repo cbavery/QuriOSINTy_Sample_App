@@ -55,7 +55,7 @@ $(document).ready(function() {
         };
 
         var task_id = window.location.href.split("/")[4];
-        url = "/response/new"
+        url = "/response/new/"
         var csrftoken = getCookie('csrftoken');
 
         $.ajax({
