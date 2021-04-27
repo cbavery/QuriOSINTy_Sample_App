@@ -167,7 +167,7 @@ def task_details(request):
                     "date_created": response['date_created'],
                     "created_by": response['created_by'],
                     "status": response['status'],
-                    "credibility": ans['credible'],
+                    "credible": ans['credible'],
                     "other_src": ans['other_src']
                 }
         print("TEMP RESPONSE", temp_response)
@@ -242,7 +242,7 @@ def create_response(request):
         event_id = int(post['event'].strip()) 
         task_id = int(post['task'].strip())
 
-        description = {"credibility":post['credibility'].strip(), "other_src":post['other_src'].strip()}
+        description = {"credible":post['credible'].strip(), "other_src":post['other_src'].strip()}
 
         # NOTE API CALL SETUP: call response POST API to add a new response for a given task ID
         # create the request object (don't foget to convert to json with json.dumps)
