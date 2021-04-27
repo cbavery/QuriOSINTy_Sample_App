@@ -113,7 +113,7 @@ def task_list(request):
                 "status": task['status'],
                 "description": task['description'],
                 "date_created": task['date_created'],
-                "src_url": task['src_url'],
+                "src_url": data['src_url'],
                 "num_responses": task['request_responses'],
                 "num_completed": num_completed
             }
