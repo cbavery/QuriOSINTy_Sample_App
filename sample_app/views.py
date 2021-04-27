@@ -161,7 +161,7 @@ def task_details(request):
 
     responses = []
     for response in data: 
-        ans = json.loads(str(response['data']))
+        ans = response['data']
         temp_response = { 
                     "id": response['id'],
                     "date_created": response['date_created'],
