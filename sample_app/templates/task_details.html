@@ -68,7 +68,8 @@
                             {% for response in responses %}
                                 <tr>
                                     <td scope="row">{{ response.id }} <a href="{% url 'sample_app:response_details' %}?token={{ token }}&event={{ event }}&task={{ task.id }}&response={{ response.id }}&tool={{ tool }}"><i class="primary fas fa-external-link-alt"></i></a></td>
-                                    <td>{{ response.ans1 }}</td>
+                                    <td>{{ response.credible }}</td>
+                                    <td>{{ response.other_src }}</td>
                                     <td>{{ response.created_by }}</td>
                                     <td>{{ response.date_created }}</td>
                                     <td>{{ response.status }}</td>
