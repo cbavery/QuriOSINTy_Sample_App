@@ -25,8 +25,9 @@ $(document).ready(function() {
 
     $('#reopen_task_btn').click(function() {
         var task_id = window.location.href.split("/")[4];
-        url = "/task/"+String(task_id)+"/update/open/";
-        console.log(url);
+        var auth_token = getUrlVars()["token"];
+        url = "/task/"+String(task_id)+"/update/open/"+String(auth_token)+"/";
+        alert(url);
 
         $.get(url, function() {
           })

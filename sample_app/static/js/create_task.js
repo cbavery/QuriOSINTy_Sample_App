@@ -14,6 +14,15 @@ function getCookie(name) {
     return cookieValue;
 }
 
+function getUrlVars() {
+    var vars = {};
+    var parts = window.location.href.replace(/[?&]+([^=&]+)=([^&]*)/gi,    
+    function(m,key,value) {
+      vars[key] = value;
+    });
+    return vars;
+}
+
 $(document).ready(function() {
 
     document.getElementById('create_task_form').onsubmit=function(e){
@@ -23,15 +32,19 @@ $(document).ready(function() {
     // Send form to the server
     $('#submit_btn').click(function() {
     
+        var token = getUrlVars()["token"]; // get the authorization token for that user from the URL query string ("token=<string>")
+        var event = getUrlVars()["event"]; // get the event ID from the URL query string ("event=<int>")
+        var tool = getUrlVars()["tool"]; // get the tool ID from the URL query string ("tool=<int>")
         var task_name = $('#task_name').val();
         var task_description = $('#task_description').val();
+        var time_estimate = $('#time_estimate').val();
         var src_url = $('#src_url').val();
-        // var evidence_list = JSON.stringify(Object.keys(evidence));
         
         var num_responses = $("#num_responses").val();
 
         if(task_name.length == 0 || 
             task_description.length == 0 ||
+            time_estimate.length == 0 ||
             src_url.length == 0 ||
             num_responses == 0) {
                 console.log("Fields not set.");
@@ -39,14 +52,18 @@ $(document).ready(function() {
         }
 
         data = {
+            "token": token,
+            "event": event,
+            "tool": tool,
             "task_name": task_name,
             "task_description": task_description,
+            "time_estimate": time_estimate,
             "src_url": src_url,
             "num_responses": num_responses
         };
         console.log(data)
 
-        url = "/task/add/";
+        url = "/task/new/";
         var csrftoken = getCookie('csrftoken');
         
         $.ajax({
@@ -57,7 +74,7 @@ $(document).ready(function() {
             dataType: "json"
           }).done(function(response) {
             $("#submit_btn").prop("disabled",true);
-            window.location.replace("/task/"+String(response)+"/");
+            window.location.replace("/task/?task="+String(response['task'])+"&token="+String(response['token'])+"&event="+String(response["event"])+"&tool="+String(response['tool']));
           }).fail(function (error) {
             $('#submit_btn').prop("disabled",false);
               console.log(error);

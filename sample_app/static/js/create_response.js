@@ -14,12 +14,17 @@ function getCookie(name) {
     return cookieValue;
 }
 
-$(document).ready(function() {
-    $('#src_url').change(function(){
-        $('#previewImage').css({'max-width' : '500px' , 'max-height' : '500px'});
-        $('#previewImage').attr("src", $('#src_url').val());
 
+function getUrlVars() {
+    var vars = {};
+    var parts = window.location.href.replace(/[?&]+([^=&]+)=([^&]*)/gi,    
+    function(m,key,value) {
+      vars[key] = value;
     });
+    return vars;
+}
+
+$(document).ready(function() {
 
     document.getElementById('create_response_form').onsubmit=function(e){
         e.preventDefault();
@@ -27,6 +32,11 @@ $(document).ready(function() {
 
     // Send form to the server
     $('#submit_btn').click(function() {
+        var token = getUrlVars()["token"]; // get the authorization token for that user from the URL query string ("token=<string>")
+        var event = getUrlVars()["event"]; // get the event ID from the URL query string ("event=<int>")
+        var tool = getUrlVars()["tool"]; // get the tool ID from the URL query string ("tool=<int>")
+        var task = getUrlVars()["task"]; // get the task ID from the URL query string ("task=<int>")
+
         var credible = $("#credible").val();
         var other_src = $("#other_src").val();
         
@@ -36,12 +46,16 @@ $(document).ready(function() {
         }
 
         data = {
+            "token": token,
+            "event": event,
+            "tool": tool,
+            "task": task,
             "credible": credible,
             "other_src": other_src
         };
 
         var task_id = window.location.href.split("/")[4];
-        url = "/task/"+String(task_id)+"/response/add/";
+        url = "/response/new"
         var csrftoken = getCookie('csrftoken');
 
         $.ajax({
@@ -52,7 +66,7 @@ $(document).ready(function() {
             dataType: "json"
           }).done(function(response) {
             $("#submit_btn").prop("disabled",true);
-            window.location.replace("/task/"+String(task_id)+"/response/"+String(response)+"/");
+            window.location.replace("/response/?task="+String(response['task'])+"&response="+String(response['response'])+"&token="+String(response['token'])+"&event="+String(response["event"])+"&tool="+String(response['tool']));
           }).fail(function (error) {
             $('#submit_btn').prop("disabled",false);
               console.log(error);
