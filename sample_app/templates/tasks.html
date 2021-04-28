@@ -30,7 +30,7 @@
                             {% for task in tasks %}
                                 <tr>
                                     <td>{{ task.id }}</td>
-                                    <td>{{ task.name }} <a href="{% url 'sample_app:task_details' task.id %}"><i class="fas fa-external-link-alt"></i></a></td>
+                                    <td>{{ task.name }} <a href=""><i class="fas fa-external-link-alt"></i></a></td>
                                     <td>{{ task.description }}</td>
                                     <td>{{ task.num_completed }}</td>
                                     <td>{{ task.num_responses }}</td>
