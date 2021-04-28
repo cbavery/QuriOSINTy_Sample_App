@@ -310,7 +310,7 @@ def response_details(request):
     print("DATA RESPONSE", data)
 
     # API returns the response and its parent task details, parse it
-    task_id = data["task_id"]
+    task_id = data['task_id']
     # NOTE API CALL SETUP: call task GET API to get one task
     url = API_BASE_URL + "task/"+str(task_id)+"/" # URL for API call
     response = requests.get(url = url) # make the get request
