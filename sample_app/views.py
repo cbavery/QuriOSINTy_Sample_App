@@ -5,7 +5,7 @@ import requests
 import datetime
 from dateutil.parser import parse
 
-API_BASE_URL = "https://quriosinty-dev.herokuapp.com/api/v1/"
+API_BASE_URL = "https://quriosinty.herokuapp.com/api/v1/"
 
 # Create your views here.
 
