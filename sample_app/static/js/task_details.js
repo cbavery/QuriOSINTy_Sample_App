@@ -7,9 +7,10 @@ $(document).ready(function() {
     } );
 
     $('#close_task_btn').click(function() {
-        var task_id = window.location.href.split("/")[4];
-        url = "/task/"+String(task_id)+"/update/closed";
-        console.log(url);
+      var task_id = getUrlVars()["task"];
+      var auth_token = getUrlVars()["token"];
+      url = "/task/"+String(task_id)+"/update/closed/"+String(auth_token)+"/";
+      alert(url);
 
         $.get(url, function() {
           })

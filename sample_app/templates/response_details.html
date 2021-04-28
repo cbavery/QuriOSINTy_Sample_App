@@ -23,17 +23,37 @@
                 <h5>Response Status: {{ response.status }} </h5>
                 <h5>Created By: {{ response.created_by }} </h5>
                 <h5>Date created: {{ response.date_created }} </h5>
-                <h5>Crediblity: {{response.description}}
                 <br>
-                <br>
-                <div class="row">
-                    <div class="col"></div>
-                    <div class="col">
-                        {% if response.status == "Pending" or response.status == "Rejected" %}<button id="approve_response_btn" class="btn btn-success" type="button">Approve Response</button>{% endif %}
-                        {% if response.status == "Pending" or response.status == "Approved" %}<button id="reject_response_btn" class="btn btn-danger" type="button">Reject Response</button>{% endif %}
+                <fieldset>                 
+                    <h5>Responses to the questions:</h5>
+                    <br>
+                    <div class="form-group">
+                        <div class="col-sm-1"></div>
+                        <label for="q1" class="col font-weight-bold"><h5>Do you think this source is credible? Why?</h5></label>
+                        <h5><span class="font-weight-bold">Answer: </span><span>{{ response.credible }}</span></h5>
+                        <div class="col-sm-1"></div>
                     </div>
-                    <div class="col"></div>
-                </div>
+                    <div class="form-group">
+                        <div class="col-sm-1"></div>
+                        <label for="q2" class="col font-weight-bold"><h5>Do you have another source that is more credible?</h5></label>
+                        <h5><span class="font-weight-bold">Answer: </span><span>{{ response.other_src }}</span></h5>
+                        <div class="col-sm-1"></div>
+                    </div>
+                    
+                </fieldset>
+                <br>
+
+                    {% if is_task_owner == "True" %}
+                        <div class="row">
+                            <div class="col"></div>
+                            <div class="col">
+                                {% if response.status == "Pending" or response.status == "Rejected" %}<button id="approve_response_btn" class="btn btn-success" type="button">Approve Response</button>{% endif %}
+                                {% if response.status == "Pending" or response.status == "Approved" %}<button id="reject_response_btn" class="btn btn-danger" type="button">Reject Response</button>{% endif %}
+                            </div>
+                            <div class="col"></div>
+                        </div>
+                    {% endif %}
+                
             </div>
 
             <div class="col-2">
